@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI-Based Crop Recommendation System</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <span class="logo-icon">🌱</span>
+                <span class="logo-text">AgriAI</span>
+            </div>
+            <ul class="nav-menu">
+                <li class="nav-item">
+                    <a href="#home" class="nav-link active">
+                        <span class="nav-icon">🏠</span>
+                        <span>Home</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="#about" class="nav-link">
+                        <span class="nav-icon">ℹ️</span>
+                        <span>About</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="#contact" class="nav-link">
+                        <span class="nav-icon">📞</span>
+                        <span>Contact</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <!-- Animated Background Elements -->
+        <div class="floating-elements">
+            <div class="crop-icon crop-1">🌾</div>
+            <div class="crop-icon crop-2">🌽</div>
+            <div class="crop-icon crop-3">🥕</div>
+            <div class="crop-icon crop-4">🍅</div>
+            <div class="crop-icon crop-5">🥬</div>
+            <div class="crop-icon crop-6">🌱</div>
+        </div>
+
+        <!-- Main Content -->
+        <div class="hero-content">
+            <div class="title-section">
+                <h1 class="main-title">AI-Based Crop Recommendation System</h1>
+                <p class="tagline">Empowering Farmers with Artificial Intelligence</p>
+                <div class="animated-tractor">🚜</div>
+            </div>
+
+            <!-- Form Card -->
+            <div class="form-card">
+                <form id="cropForm" class="crop-form">
+                    <div class="form-header">
+                        <h2>Get Your Crop Recommendation</h2>
+                        <p>Enter your farm details to receive AI-powered crop suggestions</p>
+                    </div>
+
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <label for="soilType" class="form-label">
+                                <span class="label-icon">🌍</span>
+                                Soil Type
+                            </label>
+                            <select id="soilType" name="soilType" class="form-control" required>
+                                <option value="">Select soil type</option>
+                                <option value="clay">Clay</option>
+                                <option value="sandy">Sandy</option>
+                                <option value="loamy">Loamy</option>
+                                <option value="silt">Silt</option>
+                                <option value="peaty">Peaty</option>
+                                <option value="chalky">Chalky</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="temperature" class="form-label">
+                                <span class="label-icon">🌡️</span>
+                                Temperature (°C)
+                            </label>
+                            <input 
+                                type="number" 
+                                id="temperature" 
+                                name="temperature" 
+                                class="form-control" 
+                                min="-10" 
+                                max="50" 
+                                placeholder="e.g., 25"
+                                required
+                            >
+                        </div>
+
+                        <div class="form-group">
+                            <label for="rainfall" class="form-label">
+                                <span class="label-icon">🌧️</span>
+                                Rainfall (mm)
+                            </label>
+                            <input 
+                                type="number" 
+                                id="rainfall" 
+                                name="rainfall" 
+                                class="form-control" 
+                                min="0" 
+                                max="3000" 
+                                placeholder="e.g., 800"
+                                required
+                            >
+                        </div>
+
+                        <div class="form-group">
+                            <label for="phLevel" class="form-label">
+                                <span class="label-icon">⚗️</span>
+                                pH Level
+                            </label>
+                            <input 
+                                type="number" 
+                                id="phLevel" 
+                                name="phLevel" 
+                                class="form-control" 
+                                min="0" 
+                                max="14" 
+                                step="0.1" 
+                                placeholder="e.g., 6.5"
+                                required
+                            >
+                        </div>
+
+                        <div class="form-group full-width">
+                            <label for="location" class="form-label">
+                                <span class="label-icon">📍</span>
+                                Location
+                            </label>
+                            <input 
+                                type="text" 
+                                id="location" 
+                                name="location" 
+                                class="form-control" 
+                                placeholder="e.g., Punjab, India"
+                                required
+                            >
+                        </div>
+                    </div>
+
+                    <div class="form-actions">
+                        <button type="submit" class="btn btn--primary btn--lg btn-recommendation">
+                            <span class="btn-icon">🚀</span>
+                            <span class="btn-text">Get Crop Recommendation</span>
+                            <div class="loading-spinner hidden"></div>
+                        </button>
+                        <button type="button" class="btn btn--outline btn--lg btn-learn-more">
+                            <span class="btn-icon">📚</span>
+                            <span>Learn More</span>
+                        </button>
+                    </div>
+                </form>
+
+                <!-- Results Section -->
+                <div id="results" class="results hidden">
+                    <div class="results-header">
+                        <h3>Recommended Crops</h3>
+                        <div class="results-icon">🌾</div>
+                    </div>
+                    <div class="results-content">
+                        <p>Based on your farm conditions, we recommend growing these crops for optimal yield:</p>
+                        <div class="crop-recommendations">
+                            <!-- Results will be populated here -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Learn More Modal -->
+    <div id="learnMoreModal" class="modal hidden">
+        <div class="modal-overlay"></div>
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>About Our AI System</h3>
+                <button class="modal-close">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="modal-section">
+                    <h4>🤖 How It Works</h4>
+                    <p>Our AI analyzes soil conditions, weather patterns, and geographical data to recommend the most suitable crops for your farm.</p>
+                </div>
+                <div class="modal-section">
+                    <h4>🎯 Benefits</h4>
+                    <ul>
+                        <li>Increased crop yield and quality</li>
+                        <li>Reduced farming risks</li>
+                        <li>Optimized resource utilization</li>
+                        <li>Data-driven farming decisions</li>
+                    </ul>
+                </div>
+                <div class="modal-section">
+                    <h4>🌱 Supported Crops</h4>
+                    <p>Our system can recommend from over 50+ crop varieties including cereals, pulses, fruits, and vegetables.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
